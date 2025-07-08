@@ -105,3 +105,19 @@ By using this specification, you agree to the terms of the Apache 2.0 license, i
 --------------
 - RFC3986: Uniform Resource Identifier (URI): Generic Syntax
 - RFC7595: Guidelines and Registration Procedures for URI Schemes
+
+
+14. Relationship to HTTP and Other URI Schemes
+----------------------------------------------
+The `mtrust` URI scheme is intentionally distinct from HTTP(S). It is designed specifically for use within AI Model Proxy Control systems and specialized protocols such as the ModelTrust Protocol (MTP).
+
+Unlike HTTP(S), which is intended for resource retrieval via web servers, the `mtrust` scheme provides identifiers for tasks, agents, and commands within trusted control networks. These identifiers are not intended for resolving resources via the web or for use in browsers.
+
+Key differences:
+- `mtrust` is a control and signaling identifier, not a content retrieval mechanism.
+- It is protocol-specific and meaningful only within MTP-compliant systems.
+- It can operate independently of HTTP transport, potentially over protocols such as MQTT, gRPC, or other message-based systems.
+- Security models rely on internal controls beyond the scope of HTTPS alone.
+
+As such, `mtrust` URIs are not interchangeable with HTTP(S) URIs and are not intended for use in general-purpose internet applications.
+
