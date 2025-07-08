@@ -1,0 +1,107 @@
+ModelTrust Protocol (MTP) URI Scheme Specification
+==================================================
+
+Document Version: 1.0  
+Date: July 8, 2025  
+Author: Egbert von Frankenberg  
+Email: egbert@knightfoxapps.com  
+Organization: ModelTrust
+
+1. Introduction
+---------------
+The `mtrust` URI scheme defines a mechanism to identify and reference resources, tasks, or agents in the context of ModelTrust Protocol (MTP), a protocol designed for trusted interactions and control signaling among artificial intelligence systems and their supervisory controls.
+
+This specification details the syntax, semantics, and use cases for the `mtrust` URI scheme.
+
+2. Scheme Name
+--------------
+mtrust
+
+3. Scheme Semantics
+-------------------
+The `mtrust` scheme identifies resources and tasks within ModelTrust Protocol environments, enabling trusted command exchanges and resource addressing between AI Model Proxy Controllers and participating agents.
+
+Example:
+  mtrust://controller.domain.example/task/execute?model_id=abc123
+
+In this example:
+- `controller.domain.example` identifies the authority (usually the domain of the controller).
+- `/task/execute` specifies the resource (task/action).
+- `model_id=abc123` is an example query parameter identifying a specific model.
+
+4. URI Syntax
+-------------
+General form:
+  mtrust://<authority>/<resource-path>?<query-parameters>
+
+Components:
+- **authority**: Domain name or IP identifying the trusted controller or resource owner.
+- **resource-path**: Defines the resource or action (must follow URL encoding per RFC3986).
+- **query-parameters**: Optional parameters in the standard URI query format.
+
+5. Encoding Considerations
+--------------------------
+- The scheme uses UTF-8 encoding for the path and query segments.
+- Reserved characters must be percent-encoded per RFC3986.
+
+6. Interoperability Considerations
+---------------------------------
+The scheme is designed for closed and federated systems implementing MTP. Cross-system interoperability depends on consistent adherence to the MTP specification.
+
+7. Applications and Protocols Using This Scheme
+-----------------------------------------------
+- ModelTrust Protocol (MTP) Clients and Servers.
+- AI Model Proxy Control (MPC) Systems for secure signaling, control, and task orchestration.
+
+8. Security Considerations
+--------------------------
+- The `mtrust` scheme is intended for secure environments; usage over unencrypted channels is prohibited.
+- Implementations must ensure:
+  - Strong transport security (e.g., TLS)
+  - Authentication of participants
+  - Authorization policies for each action/resource
+  - Logging and audit mechanisms for critical actions
+
+Misuse of this scheme may lead to unauthorized access to AI control systems if security measures are not enforced.
+
+9. Examples
+-----------
+Example 1:
+  mtrust://controller.ai.example.com/task/monitor?model_id=xyz789
+
+Example 2:
+  mtrust://secure-node.local/resource/heartbeat
+
+Example 3 (JSON API Payload):
+{
+  "uri": "mtrust://controller.domain.example/task/execute?model_id=xyz123",
+  "auth_token": "abcdef123456",
+  "timestamp": "2025-07-08T12:34:56Z"
+}
+
+10. Change Control
+------------------
+This specification is maintained by:
+  Egbert von Frankenberg  
+  Email: egbert@knightfoxapps.com  
+  Organization: ModelTrust
+
+11. Changelog
+-------------
+Version 1.0 - July 8, 2025
+- Initial version, defines core syntax, usage, and security considerations.
+
+12. License
+-----------
+This specification is licensed under the Apache License 2.0.
+
+You may obtain a copy of the license at:
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+By using this specification, you agree to the terms of the Apache 2.0 license, including its patent provisions.
+
+13. References
+--------------
+- RFC3986: Uniform Resource Identifier (URI): Generic Syntax
+- RFC7595: Guidelines and Registration Procedures for URI Schemes
