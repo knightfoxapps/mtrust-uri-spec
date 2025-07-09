@@ -1,11 +1,10 @@
 ModelTrust Protocol (MTP) URI Scheme Specification
 ==================================================
 
-Document Version: 1.0  
-Date: July 8, 2025  
+Document Version: 1.1  
+Date: July 9, 2025  
 Author: Egbert von Frankenberg  
 Email: egbert@knightfoxapps.com  
-Organization: ModelTrust
 
 1. Introduction
 ---------------
@@ -41,8 +40,7 @@ Components:
 
 5. Encoding Considerations
 --------------------------
-- The scheme uses UTF-8 encoding for the path and query segments.
-- Reserved characters must be percent-encoded per RFC3986.
+The scheme uses UTF-8 encoding for the path and query segments, with percent-encoding as specified in RFC 3986 [RFC3986].
 
 6. Interoperability Considerations
 ---------------------------------
@@ -84,10 +82,12 @@ Example 3 (JSON API Payload):
 This specification is maintained by:
   Egbert von Frankenberg  
   Email: egbert@knightfoxapps.com  
-  Organization: ModelTrust
 
 11. Changelog
 -------------
+Version 1.1 - July 9, 2025
+- Revised Encoding Considerations to align with RFC 3986, based on IANA review feedback.
+
 Version 1.0 - July 8, 2025
 - Initial version, defines core syntax, usage, and security considerations.
 
@@ -106,7 +106,6 @@ By using this specification, you agree to the terms of the Apache 2.0 license, i
 - RFC3986: Uniform Resource Identifier (URI): Generic Syntax
 - RFC7595: Guidelines and Registration Procedures for URI Schemes
 
-
 14. Relationship to HTTP and Other URI Schemes
 ----------------------------------------------
 The `mtrust` URI scheme is intentionally distinct from HTTP(S). It is designed specifically for use within AI Model Proxy Control systems and specialized protocols such as the ModelTrust Protocol (MTP).
@@ -120,4 +119,3 @@ Key differences:
 - Security models rely on internal controls beyond the scope of HTTPS alone.
 
 As such, `mtrust` URIs are not interchangeable with HTTP(S) URIs and are not intended for use in general-purpose internet applications.
-
